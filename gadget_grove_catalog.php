@@ -1,50 +1,36 @@
 <?php
-// Helper: works both in CLI and browser
-$nl = (php_sapi_name() === "cli") ? PHP_EOL : "<br>";
+// Task 1
+$names = ["Wireless Mouse", "Mechanical Keyboard", "USB-C Hub", "Portable Speaker"];
+$prices = [25.99, 79.99, 34.50, 49.99];
 
-// -----------------------
-// Task 1: Basic Product List (Indexed Array)
-// -----------------------
-$productNames = ["Wireless Mouse", "Mechanical Keyboard", "USB-C Hub", "Portable Speaker"];
-$productPrices = [25.99, 79.99, 34.50, 49.99];
+echo "Products: " . implode(", ", $names) . "<br>";
+echo "First Price: ₱" . $prices[0] . "<br>";
+echo "Last Price: ₱" . $prices[count($prices)-1] . "<br><br>";
 
-echo "Product Names: " . implode(", ", $productNames) . $nl;
-echo "First product price: ₱" . number_format($productPrices[0], 2) . $nl;
-echo "Last product price: ₱" . number_format($productPrices[count($productPrices) - 1], 2) . $nl;
-
-echo $nl;
-
-// -----------------------
-// Task 2: Detailed Product View (Associative Array)
-// -----------------------
-$productDetail = [
+// Task 2
+$product = [
     "name" => "Mechanical Keyboard",
     "price" => 79.99,
     "brand" => "KeyTech",
-    "inStock" => true,
-    "description" => "Durable mechanical keyboard with customizable RGB lighting.",
+    "stock" => true,
     "warranty" => "2 years"
 ];
 
-echo "Product: " . $productDetail["name"] . $nl;
-echo "Brand: " . $productDetail["brand"] . $nl;
-echo "Price: ₱" . number_format($productDetail["price"], 2) . $nl;
-echo "In Stock: " . ($productDetail["inStock"] ? "Yes" : "No") . $nl;
-echo "Warranty: " . $productDetail["warranty"] . $nl;
+echo "Name: " . $product["name"] . "<br>";
+echo "Brand: " . $product["brand"] . "<br>";
+echo "Price: ₱" . $product["price"] . "<br>";
+echo "Stock: " . ($product["stock"] ? "Yes" : "No") . "<br>";
+echo "Warranty: " . $product["warranty"] . "<br><br>";
 
-echo $nl;
-
-// -----------------------
-// Task 3: Full Catalog (Multidimensional Array)
-// -----------------------
+// Task 3
 $catalog = [
-    ["id" => 1, "name" => "Wireless Mouse", "price" => 25.99, "inStock" => true],
-    ["id" => 2, "name" => "Mechanical Keyboard", "price" => 79.99, "inStock" => true],
-    ["id" => 3, "name" => "USB-C Hub", "price" => 34.50, "inStock" => false]
+    ["name" => "Wireless Mouse", "price" => 25.99],
+    ["name" => "Mechanical Keyboard", "price" => 79.99],
+    ["name" => "USB-C Hub", "price" => 34.50]
 ];
 
-echo "--- Full Catalog ---" . $nl;
-foreach ($catalog as $product) {
-    echo "Product: " . $product["name"] . " - Price: ₱" . number_format($product["price"], 2) . $nl;
+echo "--- Catalog ---<br>";
+foreach ($catalog as $c) {
+    echo $c["name"] . " - ₱" . $c["price"] . "<br>";
 }
 ?>
